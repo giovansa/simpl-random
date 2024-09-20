@@ -13,6 +13,13 @@ type ListRandomizer struct {
 
 func main() {
 	e := echo.New()
+	e.GET("", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{
+			"date":    time.Now().Format(time.RFC3339),
+			"message": "Hi, this is simple app list randomizer.",
+			"version": "v0.0.1",
+		})
+	})
 	e.POST("/list", func(c echo.Context) error {
 		reqBody := new(ListRandomizer)
 
