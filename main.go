@@ -32,8 +32,9 @@ func main() {
 		idxRandom := rand.Intn(len(reqBody.List))
 		result = reqBody.List[idxRandom]
 		return c.JSON(http.StatusOK, map[string]string{
-			"date":   time.Now().Format(time.RFC3339),
-			"result": result,
+			"version": "v1.0.0",
+			"date":    time.Now().Format(time.RFC3339),
+			"result":  result,
 		})
 	})
 	e.Start(":8080")
